@@ -121,9 +121,10 @@
   }
   function seatScore(s, seat) {
     const p = s.players[seat];
-    return `<div class="score-card ${seat.toLowerCase()}"><div><div class="seat">ANSWER ${seat} · THIS ROUND</div><div class="player-name">${h(p.name || 'Waiting…')}</div></div><div class="score-value">${fmt(p.score)}</div></div>`;
+    return `<div class="score-card ${seat.toLowerCase()}"><div><div class="seat">ANSWER ${seat} · THIS ROUND</div><div class="player-name">${s.anonymous_round ? '🔒 Identity hidden' : h(p.name || 'Waiting…')}</div></div><div class="score-value">${s.anonymous_round ? '—' : fmt(p.score)}</div></div>`;
   }
   function leaderboard(s) {
+    if (s.anonymous_round) return '<section class="panel inner-space"><h2 class="section-head">🔒 Leaderboard paused for blind voting</h2><p class="subtle small">Player identities and scores will appear again once voting closes.</p></section>';
     return `<section class="panel inner-space"><div class="upper-actions"><h2 class="section-head">🏆 All-contestant leaderboard</h2><span class="tag">${s.contestant_count} CONTESTANTS</span></div>
       <div class="leaderboard-list">${s.contestants.map((p,i)=>`<div class="leader-row${p.active_seat ? ' currently-playing' : ''}${p.is_me ? ' is-me' : ''}"><span class="rank">#${i+1}</span><div class="leader-name"><strong>${h(p.name)}${p.is_me ? ' (you)' : ''}</strong><span class="subtle small">${p.active_seat ? 'Answering this round · '+p.active_seat : 'Waiting / voting'} · ${p.turns} turn${p.turns===1?'':'s'} played</span></div><strong class="leader-points">${fmt(p.score)}</strong></div>`).join('') || '<p class="subtle">Contestants will appear here when they join.</p>'}</div>
     </section>`;
@@ -175,7 +176,7 @@
     return `<div class="layout-two inner-space">${['A','B'].map(seat=>{
       const chosen = s.my_vote === seat;
       const cl = `tile ${seat.toLowerCase()}${allowVote ? ' vote-card' : ''}${chosen ? ' chosen' : ''}`;
-      const child = `<div class="tile-head"><span class="tile-number">${seat}</span><span class="seat">${h(s.players[seat].name)}</span></div><div class="tile-answer">${h(s.answers[seat] || 'No answer submitted')}</div>${allowVote ? `<div class="vote-call">${chosen ? '✓ Your vote is locked in' : 'TAP TO VOTE FOR THIS ANSWER →'}</div>` : ''}`;
+      const child = `<div class="tile-head"><span class="tile-number">${seat}</span><span class="seat">${s.anonymous_round ? 'Anonymous answer' : h(s.players[seat].name)}</span></div><div class="tile-answer">${h(s.answers[seat] || 'No answer submitted')}</div>${allowVote ? `<div class="vote-call">${chosen ? '✓ Your vote is locked in' : 'TAP TO VOTE FOR THIS ANSWER →'}</div>` : ''}`;
       return allowVote ? `<button class="${cl}" data-choice="${seat}" ${s.my_vote || s.ends_at*1000 <= Date.now()+serverOffsetMs ? 'disabled' : ''}>${child}</button>` : `<article class="${cl}">${child}</article>`;
     }).join('')}</div>`;
   }
