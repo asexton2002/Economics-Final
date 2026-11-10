@@ -1,0 +1,52 @@
+[
+  {
+    "topic": "Supply & Demand",
+    "prompt": "A concert sells out immediately. Explain why ticket resale prices can rise far above face value.",
+    "note": "A strong answer identifies scarce supply at the initial price and high demand/willingness to pay; in secondary markets, prices can increase toward a market-clearing price."
+  },
+  {
+    "topic": "GDP",
+    "prompt": "A U.S. customer buys a $1,000 imported laptop. Explain what happens to U.S. GDP and why.",
+    "note": "Imports are subtracted in GDP's expenditure formula to offset consumption spending on foreign production; the imported laptop itself does not add to U.S. domestic production. Domestic retail services or margins can contribute."
+  },
+  {
+    "topic": "Supply & Demand",
+    "prompt": "A new technology allows companies to produce electric cars much more cheaply. Assuming demand stays the same, what happens to the equilibrium price and quantity of electric cars?",
+    "note": "FULL (+500): Lower costs increase supply (rightward shift), so equilibrium price falls and quantity rises. PARTIAL (+250): Gives the correct direction of one equilibrium change or both directions without explaining why. INCORRECT (0): Claims price rises or quantity falls without sound reasoning."
+  },
+  {
+    "topic": "Opportunity Cost",
+    "prompt": "You spend Saturday working for $120 instead of going to a free basketball game. What is your opportunity cost?",
+    "note": "The opportunity cost of working is the value of the best alternative forgone—attending the game and any associated benefit—not automatically $120. The $120 is a benefit of working."
+  },
+  {
+    "topic": "Sunk Costs",
+    "prompt": "You paid $50 for a nonrefundable concert ticket, but on the day of the concert you no longer want to go. Should the $50 you already spent affect your decision to attend? Explain.",
+    "note": "FULL (+500): No; $50 is a sunk, unrecoverable cost. Attend only if future benefits outweigh future costs. PARTIAL (+250): Says no because the money is already spent without clearly explaining sunk costs. INCORRECT (0): Says attending recovers the $50 or you must attend to avoid wasting it."
+  },
+  {
+    "topic": "GDP",
+    "prompt": "You buy a brand-new car produced in the United States for $30,000, while your friend buys a used car for $30,000. How do these purchases affect U.S. GDP differently?",
+    "note": "FULL (+500): Newly produced domestic car counts in GDP in year of production (if bought from current production); used car production is not counted twice, although current resale/dealer services may count. PARTIAL (+250): New output counts but used goods do not count again, with limited explanation. INCORRECT (0): Both cars add $30,000 of new domestic production. NOTE: an unsold car built in a prior year was already counted in inventory investment, not again in the sale year."
+  },
+  {
+    "topic": "GDP per Capita",
+    "prompt": "Two countries have the same GDP, but Country A has 10 million people and Country B has 50 million people. Which country has the higher GDP per capita, and why?",
+    "note": "FULL (+500): Country A; GDP per capita = GDP divided by population, so with equal GDP and one-fifth the people, A has 5x the GDP per person. PARTIAL (+250): Identifies Country A with minimal explanation. INCORRECT (0): Country B or equal GDP per capita."
+  },
+  {
+    "topic": "Economic Growth",
+    "prompt": "A country's nominal GDP rises by 7% while prices rise by 5%. Does that prove its real output grew by 7%?",
+    "note": "No. Nominal GDP includes price changes; real GDP adjusts for prices. Rough real growth is about 2% here (more exactly 1.07/1.05−1 ≈ 1.9%, assuming matching price index)."
+  },
+  {
+    "topic": "Price Floors",
+    "prompt": "The government sets a legal minimum price for milk above the market equilibrium price. What happens to the quantity supplied and quantity demanded of milk, and what market condition results?",
+    "note": "FULL (+500): Binding price floor raises quantity supplied and lowers quantity demanded versus equilibrium, creating a surplus. PARTIAL (+250): Names surplus without both quantity effects. INCORRECT (0): Names a shortage or says no effect."
+  },
+  {
+    "topic": "Price Ceilings",
+    "prompt": "The government sets a legal maximum price for apartments below the market equilibrium rent. Why might this make apartments harder to find even though rent is cheaper?",
+    "note": "FULL (+500): Binding rent ceiling raises quantity demanded and reduces quantity supplied, leading to shortage; waiting lists/nonprice rationing possible. PARTIAL (+250): Identifies shortage with incomplete reasoning. INCORRECT (0): Claims there must be a surplus or guaranteed greater availability."
+  }
+]
