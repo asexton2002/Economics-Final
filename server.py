@@ -179,12 +179,13 @@ def state_for(room, role, contestant, token):
     phase = room['phase']
     question = room['questions'][room['index']]
     seat = current_seat(room, contestant)
+    anonymous = phase in ('answering', 'voting')
     players = {}
     for s in ('A', 'B'):
         player = contestant_by_id(room, room['active'][s]) if room['active'][s] else None
         players[s] = {
-            'name': player['name'] if player else None,
-            'score': player['score'] if player else 0,
+            'name': (f'Answer {s}' if anonymous else player['name']) if player else None,
+            'score': None if anonymous else (player['score'] if player else 0),
             'submitted': room['answers'][s] is not None,
             'joined': player is not None,
         }
@@ -193,7 +194,7 @@ def state_for(room, role, contestant, token):
     for p in ranked:
         standings.append({'id': p['id'], 'name': p['name'], 'score': p['score'],
                           'turns': p['turns'], 'is_me': contestant is not None and contestant['id'] == p['id'],
-                          'active_seat': current_seat(room, p)})
+                          'active_seat': None if anonymous else current_seat(room, p)})
     result = {
         'room': room['code'], 'version': room['version'], 'phase': phase,
         'server_time': time.time(), 'ends_at': room.get('ends_at'),
@@ -206,6 +207,7 @@ def state_for(room, role, contestant, token):
         'audience_count': len(room['audience']),
         'submitted_count': sum(v is not None for v in room['answers'].values()),
         'votes_cast': len(room['votes']), 'history': room['history'],
+        'anonymous_round': anonymous,
         'lan_url': f"http://{lan_ip()}:{PORT}/?room={room['code']}",
     }
     if role == 'host':
